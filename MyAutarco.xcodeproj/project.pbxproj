@@ -1,0 +1,879 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D206434B2AF998A300C74A7C /* HousePowerDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D206434A2AF998A300C74A7C /* HousePowerDateView.swift */; };
+		D206434C2AF998F900C74A7C /* HousePowerDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D206434A2AF998A300C74A7C /* HousePowerDateView.swift */; };
+		D20B5EEB2AEF2DBF00BD9EBD /* StackedHistogramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B5EEA2AEF2DBF00BD9EBD /* StackedHistogramView.swift */; };
+		D20B5EEC2AEF2DBF00BD9EBD /* StackedHistogramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B5EEA2AEF2DBF00BD9EBD /* StackedHistogramView.swift */; };
+		D20B5EEE2AEFB54B00BD9EBD /* ModelData+test.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B5EED2AEFB54B00BD9EBD /* ModelData+test.swift */; };
+		D20B5EEF2AEFB54B00BD9EBD /* ModelData+test.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B5EED2AEFB54B00BD9EBD /* ModelData+test.swift */; };
+		D20B5EF12AEFC16000BD9EBD /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B5EF02AEFC16000BD9EBD /* Keychain.swift */; };
+		D20B5EF22AEFC16000BD9EBD /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B5EF02AEFC16000BD9EBD /* Keychain.swift */; };
+		D20B5EF52AEFC58100BD9EBD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B5EF42AEFC58100BD9EBD /* LoginView.swift */; };
+		D20B5EF62AEFC58100BD9EBD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B5EF42AEFC58100BD9EBD /* LoginView.swift */; };
+		D20B5EFD2AEFD62C00BD9EBD /* HouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B5EFB2AEFD1B700BD9EBD /* HouseView.swift */; };
+		D2387CC82AE5D8BC00F43AB0 /* URLResponse+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2387CC72AE5D8BC00F43AB0 /* URLResponse+extension.swift */; };
+		D24C4CB42AF844400073B8DA /* AutarcoAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CB32AF844400073B8DA /* AutarcoAPIClient.swift */; };
+		D24C4CB52AF844440073B8DA /* AutarcoAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CB32AF844400073B8DA /* AutarcoAPIClient.swift */; };
+		D24C4CB72AF845390073B8DA /* ProcessInfo+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CB62AF845390073B8DA /* ProcessInfo+extension.swift */; };
+		D24C4CB82AF845390073B8DA /* ProcessInfo+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C4CB62AF845390073B8DA /* ProcessInfo+extension.swift */; };
+		D27947A02AF819A4004462ED /* AreaGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D279479F2AF819A4004462ED /* AreaGraphView.swift */; };
+		D27947A12AF81A56004462ED /* AreaGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D279479F2AF819A4004462ED /* AreaGraphView.swift */; };
+		D29EB92A2AEEB3A000F9C36B /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB071E2AE5A7EC0040D291 /* ModelData.swift */; };
+		D2D42B962AEEB5E500FD15F8 /* URLResponse+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2387CC72AE5D8BC00F43AB0 /* URLResponse+extension.swift */; };
+		D2D42B982AEEB6B700FD15F8 /* HousePowerNowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D42B972AEEB6B700FD15F8 /* HousePowerNowView.swift */; };
+		D2D42B992AEEB6B700FD15F8 /* HousePowerNowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D42B972AEEB6B700FD15F8 /* HousePowerNowView.swift */; };
+		D2D655772AFA279000305A09 /* DataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D655762AFA279000305A09 /* DataPoint.swift */; };
+		D2D655782AFA285E00305A09 /* DataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D655762AFA279000305A09 /* DataPoint.swift */; };
+		D2DD1CED2AEE59B000473D0B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DD1CEC2AEE59B000473D0B /* WidgetKit.framework */; };
+		D2DD1CEF2AEE59B000473D0B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DD1CEE2AEE59B000473D0B /* SwiftUI.framework */; };
+		D2DD1CF22AEE59B000473D0B /* HousePowerBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD1CF12AEE59B000473D0B /* HousePowerBundle.swift */; };
+		D2DD1CF62AEE59B000473D0B /* HousePower.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD1CF52AEE59B000473D0B /* HousePower.swift */; };
+		D2DD1CF82AEE59B000473D0B /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD1CF72AEE59B000473D0B /* AppIntent.swift */; };
+		D2DD1CFA2AEE59B200473D0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2DD1CF92AEE59B200473D0B /* Assets.xcassets */; };
+		D2DD1CFE2AEE59B200473D0B /* HousePowerExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D2DD1CEA2AEE59B000473D0B /* HousePowerExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D2EB06F52AE5A6E40040D291 /* MyAutarcoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB06F42AE5A6E40040D291 /* MyAutarcoApp.swift */; };
+		D2EB06F72AE5A6E40040D291 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB06F62AE5A6E40040D291 /* ContentView.swift */; };
+		D2EB06F92AE5A6E60040D291 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2EB06F82AE5A6E60040D291 /* Assets.xcassets */; };
+		D2EB06FC2AE5A6E60040D291 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2EB06FB2AE5A6E60040D291 /* Preview Assets.xcassets */; };
+		D2EB07062AE5A6E60040D291 /* MyAutarcoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB07052AE5A6E60040D291 /* MyAutarcoTests.swift */; };
+		D2EB07102AE5A6E60040D291 /* MyAutarcoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB070F2AE5A6E60040D291 /* MyAutarcoUITests.swift */; };
+		D2EB07122AE5A6E60040D291 /* MyAutarcoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB07112AE5A6E60040D291 /* MyAutarcoUITestsLaunchTests.swift */; };
+		D2EB071F2AE5A7EC0040D291 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB071E2AE5A7EC0040D291 /* ModelData.swift */; };
+		D2FAF48F2AEFD79D0014CC50 /* HouseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B5EFB2AEFD1B700BD9EBD /* HouseView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D2DD1CFC2AEE59B200473D0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2EB06E92AE5A6E40040D291 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2DD1CE92AEE59B000473D0B;
+			remoteInfo = "House PowerExtension";
+		};
+		D2EB07022AE5A6E60040D291 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2EB06E92AE5A6E40040D291 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2EB06F02AE5A6E40040D291;
+			remoteInfo = MyAutarco;
+		};
+		D2EB070C2AE5A6E60040D291 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2EB06E92AE5A6E40040D291 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2EB06F02AE5A6E40040D291;
+			remoteInfo = MyAutarco;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D2DD1CFF2AEE59B200473D0B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D2DD1CFE2AEE59B200473D0B /* HousePowerExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D206434A2AF998A300C74A7C /* HousePowerDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousePowerDateView.swift; sourceTree = "<group>"; };
+		D20B5EEA2AEF2DBF00BD9EBD /* StackedHistogramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedHistogramView.swift; sourceTree = "<group>"; };
+		D20B5EED2AEFB54B00BD9EBD /* ModelData+test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModelData+test.swift"; sourceTree = "<group>"; };
+		D20B5EF02AEFC16000BD9EBD /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		D20B5EF42AEFC58100BD9EBD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D20B5EFB2AEFD1B700BD9EBD /* HouseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseView.swift; sourceTree = "<group>"; };
+		D2387CC72AE5D8BC00F43AB0 /* URLResponse+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLResponse+extension.swift"; sourceTree = "<group>"; };
+		D24C4CB32AF844400073B8DA /* AutarcoAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutarcoAPIClient.swift; sourceTree = "<group>"; };
+		D24C4CB62AF845390073B8DA /* ProcessInfo+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+extension.swift"; sourceTree = "<group>"; };
+		D279479F2AF819A4004462ED /* AreaGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaGraphView.swift; sourceTree = "<group>"; };
+		D2D42B972AEEB6B700FD15F8 /* HousePowerNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousePowerNowView.swift; sourceTree = "<group>"; };
+		D2D655762AFA279000305A09 /* DataPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPoint.swift; sourceTree = "<group>"; };
+		D2DD1CEA2AEE59B000473D0B /* HousePowerExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HousePowerExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2DD1CEC2AEE59B000473D0B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D2DD1CEE2AEE59B000473D0B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D2DD1CF12AEE59B000473D0B /* HousePowerBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousePowerBundle.swift; sourceTree = "<group>"; };
+		D2DD1CF52AEE59B000473D0B /* HousePower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousePower.swift; sourceTree = "<group>"; };
+		D2DD1CF72AEE59B000473D0B /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		D2DD1CF92AEE59B200473D0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D2DD1CFB2AEE59B200473D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2EB06F12AE5A6E40040D291 /* MyAutarco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyAutarco.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2EB06F42AE5A6E40040D291 /* MyAutarcoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAutarcoApp.swift; sourceTree = "<group>"; };
+		D2EB06F62AE5A6E40040D291 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D2EB06F82AE5A6E60040D291 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D2EB06FB2AE5A6E60040D291 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D2EB07012AE5A6E60040D291 /* MyAutarcoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyAutarcoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2EB07052AE5A6E60040D291 /* MyAutarcoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAutarcoTests.swift; sourceTree = "<group>"; };
+		D2EB070B2AE5A6E60040D291 /* MyAutarcoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyAutarcoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2EB070F2AE5A6E60040D291 /* MyAutarcoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAutarcoUITests.swift; sourceTree = "<group>"; };
+		D2EB07112AE5A6E60040D291 /* MyAutarcoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAutarcoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D2EB071E2AE5A7EC0040D291 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		D2FAF4902AEFDF830014CC50 /* MyAutarco.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyAutarco.entitlements; sourceTree = "<group>"; };
+		D2FAF4912AEFDFB80014CC50 /* HousePowerExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HousePowerExtension.entitlements; sourceTree = "<group>"; };
+		D2FAF4E52AEFFD670014CC50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2DD1CE72AEE59B000473D0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2DD1CEF2AEE59B000473D0B /* SwiftUI.framework in Frameworks */,
+				D2DD1CED2AEE59B000473D0B /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EB06EE2AE5A6E40040D291 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EB06FE2AE5A6E60040D291 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EB07082AE5A6E60040D291 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D20B5EF32AEFC22200BD9EBD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D2EB06F62AE5A6E40040D291 /* ContentView.swift */,
+				D20B5EFB2AEFD1B700BD9EBD /* HouseView.swift */,
+				D2D42B972AEEB6B700FD15F8 /* HousePowerNowView.swift */,
+				D206434A2AF998A300C74A7C /* HousePowerDateView.swift */,
+				D20B5EEA2AEF2DBF00BD9EBD /* StackedHistogramView.swift */,
+				D279479F2AF819A4004462ED /* AreaGraphView.swift */,
+				D20B5EF42AEFC58100BD9EBD /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D20B5EF72AEFD02C00BD9EBD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D24C4CB32AF844400073B8DA /* AutarcoAPIClient.swift */,
+				D2D655762AFA279000305A09 /* DataPoint.swift */,
+				D2EB071E2AE5A7EC0040D291 /* ModelData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D2DD1CEB2AEE59B000473D0B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2DD1CEC2AEE59B000473D0B /* WidgetKit.framework */,
+				D2DD1CEE2AEE59B000473D0B /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D2DD1CF02AEE59B000473D0B /* HousePower */ = {
+			isa = PBXGroup;
+			children = (
+				D2DD1CF12AEE59B000473D0B /* HousePowerBundle.swift */,
+				D2DD1CF52AEE59B000473D0B /* HousePower.swift */,
+				D2DD1CF72AEE59B000473D0B /* AppIntent.swift */,
+				D2DD1CF92AEE59B200473D0B /* Assets.xcassets */,
+				D2FAF4912AEFDFB80014CC50 /* HousePowerExtension.entitlements */,
+				D2DD1CFB2AEE59B200473D0B /* Info.plist */,
+			);
+			path = HousePower;
+			sourceTree = "<group>";
+		};
+		D2EB06E82AE5A6E40040D291 = {
+			isa = PBXGroup;
+			children = (
+				D2EB06F32AE5A6E40040D291 /* MyAutarco */,
+				D2EB07042AE5A6E60040D291 /* MyAutarcoTests */,
+				D2EB070E2AE5A6E60040D291 /* MyAutarcoUITests */,
+				D2DD1CF02AEE59B000473D0B /* HousePower */,
+				D2DD1CEB2AEE59B000473D0B /* Frameworks */,
+				D2EB06F22AE5A6E40040D291 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D2EB06F22AE5A6E40040D291 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2EB06F12AE5A6E40040D291 /* MyAutarco.app */,
+				D2EB07012AE5A6E60040D291 /* MyAutarcoTests.xctest */,
+				D2EB070B2AE5A6E60040D291 /* MyAutarcoUITests.xctest */,
+				D2DD1CEA2AEE59B000473D0B /* HousePowerExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D2EB06F32AE5A6E40040D291 /* MyAutarco */ = {
+			isa = PBXGroup;
+			children = (
+				D2FAF4E52AEFFD670014CC50 /* Info.plist */,
+				D2FAF4902AEFDF830014CC50 /* MyAutarco.entitlements */,
+				D2EB06F42AE5A6E40040D291 /* MyAutarcoApp.swift */,
+				D20B5EF32AEFC22200BD9EBD /* Views */,
+				D20B5EF72AEFD02C00BD9EBD /* Models */,
+				D20B5EF02AEFC16000BD9EBD /* Keychain.swift */,
+				D20B5EED2AEFB54B00BD9EBD /* ModelData+test.swift */,
+				D24C4CB62AF845390073B8DA /* ProcessInfo+extension.swift */,
+				D2EB06F82AE5A6E60040D291 /* Assets.xcassets */,
+				D2EB06FA2AE5A6E60040D291 /* Preview Content */,
+				D2387CC72AE5D8BC00F43AB0 /* URLResponse+extension.swift */,
+			);
+			path = MyAutarco;
+			sourceTree = "<group>";
+		};
+		D2EB06FA2AE5A6E60040D291 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D2EB06FB2AE5A6E60040D291 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D2EB07042AE5A6E60040D291 /* MyAutarcoTests */ = {
+			isa = PBXGroup;
+			children = (
+				D2EB07052AE5A6E60040D291 /* MyAutarcoTests.swift */,
+			);
+			path = MyAutarcoTests;
+			sourceTree = "<group>";
+		};
+		D2EB070E2AE5A6E60040D291 /* MyAutarcoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D2EB070F2AE5A6E60040D291 /* MyAutarcoUITests.swift */,
+				D2EB07112AE5A6E60040D291 /* MyAutarcoUITestsLaunchTests.swift */,
+			);
+			path = MyAutarcoUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D2DD1CE92AEE59B000473D0B /* HousePowerExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2DD1D022AEE59B200473D0B /* Build configuration list for PBXNativeTarget "HousePowerExtension" */;
+			buildPhases = (
+				D2DD1CE62AEE59B000473D0B /* Sources */,
+				D2DD1CE72AEE59B000473D0B /* Frameworks */,
+				D2DD1CE82AEE59B000473D0B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HousePowerExtension;
+			productName = "House PowerExtension";
+			productReference = D2DD1CEA2AEE59B000473D0B /* HousePowerExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		D2EB06F02AE5A6E40040D291 /* MyAutarco */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2EB07152AE5A6E60040D291 /* Build configuration list for PBXNativeTarget "MyAutarco" */;
+			buildPhases = (
+				D2EB06ED2AE5A6E40040D291 /* Sources */,
+				D2EB06EE2AE5A6E40040D291 /* Frameworks */,
+				D2EB06EF2AE5A6E40040D291 /* Resources */,
+				D2DD1CFF2AEE59B200473D0B /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2DD1CFD2AEE59B200473D0B /* PBXTargetDependency */,
+			);
+			name = MyAutarco;
+			productName = MyAutarco;
+			productReference = D2EB06F12AE5A6E40040D291 /* MyAutarco.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D2EB07002AE5A6E60040D291 /* MyAutarcoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2EB07182AE5A6E60040D291 /* Build configuration list for PBXNativeTarget "MyAutarcoTests" */;
+			buildPhases = (
+				D2EB06FD2AE5A6E60040D291 /* Sources */,
+				D2EB06FE2AE5A6E60040D291 /* Frameworks */,
+				D2EB06FF2AE5A6E60040D291 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2EB07032AE5A6E60040D291 /* PBXTargetDependency */,
+			);
+			name = MyAutarcoTests;
+			productName = MyAutarcoTests;
+			productReference = D2EB07012AE5A6E60040D291 /* MyAutarcoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D2EB070A2AE5A6E60040D291 /* MyAutarcoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2EB071B2AE5A6E60040D291 /* Build configuration list for PBXNativeTarget "MyAutarcoUITests" */;
+			buildPhases = (
+				D2EB07072AE5A6E60040D291 /* Sources */,
+				D2EB07082AE5A6E60040D291 /* Frameworks */,
+				D2EB07092AE5A6E60040D291 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2EB070D2AE5A6E60040D291 /* PBXTargetDependency */,
+			);
+			name = MyAutarcoUITests;
+			productName = MyAutarcoUITests;
+			productReference = D2EB070B2AE5A6E60040D291 /* MyAutarcoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D2EB06E92AE5A6E40040D291 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					D2DD1CE92AEE59B000473D0B = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					D2EB06F02AE5A6E40040D291 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					D2EB07002AE5A6E60040D291 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = D2EB06F02AE5A6E40040D291;
+					};
+					D2EB070A2AE5A6E60040D291 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = D2EB06F02AE5A6E40040D291;
+					};
+				};
+			};
+			buildConfigurationList = D2EB06EC2AE5A6E40040D291 /* Build configuration list for PBXProject "MyAutarco" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D2EB06E82AE5A6E40040D291;
+			productRefGroup = D2EB06F22AE5A6E40040D291 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2EB06F02AE5A6E40040D291 /* MyAutarco */,
+				D2EB07002AE5A6E60040D291 /* MyAutarcoTests */,
+				D2EB070A2AE5A6E60040D291 /* MyAutarcoUITests */,
+				D2DD1CE92AEE59B000473D0B /* HousePowerExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D2DD1CE82AEE59B000473D0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2DD1CFA2AEE59B200473D0B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EB06EF2AE5A6E40040D291 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2EB06FC2AE5A6E60040D291 /* Preview Assets.xcassets in Resources */,
+				D2EB06F92AE5A6E60040D291 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EB06FF2AE5A6E60040D291 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EB07092AE5A6E60040D291 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2DD1CE62AEE59B000473D0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D24C4CB52AF844440073B8DA /* AutarcoAPIClient.swift in Sources */,
+				D2DD1CF62AEE59B000473D0B /* HousePower.swift in Sources */,
+				D2D42B992AEEB6B700FD15F8 /* HousePowerNowView.swift in Sources */,
+				D2DD1CF82AEE59B000473D0B /* AppIntent.swift in Sources */,
+				D20B5EEF2AEFB54B00BD9EBD /* ModelData+test.swift in Sources */,
+				D27947A12AF81A56004462ED /* AreaGraphView.swift in Sources */,
+				D206434C2AF998F900C74A7C /* HousePowerDateView.swift in Sources */,
+				D2D42B962AEEB5E500FD15F8 /* URLResponse+extension.swift in Sources */,
+				D24C4CB82AF845390073B8DA /* ProcessInfo+extension.swift in Sources */,
+				D20B5EEC2AEF2DBF00BD9EBD /* StackedHistogramView.swift in Sources */,
+				D29EB92A2AEEB3A000F9C36B /* ModelData.swift in Sources */,
+				D2DD1CF22AEE59B000473D0B /* HousePowerBundle.swift in Sources */,
+				D20B5EF62AEFC58100BD9EBD /* LoginView.swift in Sources */,
+				D2FAF48F2AEFD79D0014CC50 /* HouseView.swift in Sources */,
+				D2D655782AFA285E00305A09 /* DataPoint.swift in Sources */,
+				D20B5EF22AEFC16000BD9EBD /* Keychain.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EB06ED2AE5A6E40040D291 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D20B5EEE2AEFB54B00BD9EBD /* ModelData+test.swift in Sources */,
+				D24C4CB42AF844400073B8DA /* AutarcoAPIClient.swift in Sources */,
+				D2387CC82AE5D8BC00F43AB0 /* URLResponse+extension.swift in Sources */,
+				D27947A02AF819A4004462ED /* AreaGraphView.swift in Sources */,
+				D2D42B982AEEB6B700FD15F8 /* HousePowerNowView.swift in Sources */,
+				D20B5EF52AEFC58100BD9EBD /* LoginView.swift in Sources */,
+				D2EB06F72AE5A6E40040D291 /* ContentView.swift in Sources */,
+				D206434B2AF998A300C74A7C /* HousePowerDateView.swift in Sources */,
+				D20B5EFD2AEFD62C00BD9EBD /* HouseView.swift in Sources */,
+				D2EB06F52AE5A6E40040D291 /* MyAutarcoApp.swift in Sources */,
+				D20B5EF12AEFC16000BD9EBD /* Keychain.swift in Sources */,
+				D20B5EEB2AEF2DBF00BD9EBD /* StackedHistogramView.swift in Sources */,
+				D2D655772AFA279000305A09 /* DataPoint.swift in Sources */,
+				D24C4CB72AF845390073B8DA /* ProcessInfo+extension.swift in Sources */,
+				D2EB071F2AE5A7EC0040D291 /* ModelData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EB06FD2AE5A6E60040D291 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2EB07062AE5A6E60040D291 /* MyAutarcoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EB07072AE5A6E60040D291 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2EB07122AE5A6E60040D291 /* MyAutarcoUITestsLaunchTests.swift in Sources */,
+				D2EB07102AE5A6E60040D291 /* MyAutarcoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D2DD1CFD2AEE59B200473D0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2DD1CE92AEE59B000473D0B /* HousePowerExtension */;
+			targetProxy = D2DD1CFC2AEE59B200473D0B /* PBXContainerItemProxy */;
+		};
+		D2EB07032AE5A6E60040D291 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2EB06F02AE5A6E40040D291 /* MyAutarco */;
+			targetProxy = D2EB07022AE5A6E60040D291 /* PBXContainerItemProxy */;
+		};
+		D2EB070D2AE5A6E60040D291 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2EB06F02AE5A6E40040D291 /* MyAutarco */;
+			targetProxy = D2EB070C2AE5A6E60040D291 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D2DD1D002AEE59B200473D0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HousePower/HousePowerExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DHKZ7WR43P;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HousePower/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HousePower;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sakrist.MyAutarco.HousePower;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D2DD1D012AEE59B200473D0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HousePower/HousePowerExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DHKZ7WR43P;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HousePower/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HousePower;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sakrist.MyAutarco.HousePower;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D2EB07132AE5A6E60040D291 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D2EB07142AE5A6E60040D291 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D2EB07162AE5A6E60040D291 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MyAutarco/MyAutarco.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MyAutarco/Preview Content\"";
+				DEVELOPMENT_TEAM = DHKZ7WR43P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyAutarco/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sakrist.MyAutarco;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D2EB07172AE5A6E60040D291 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MyAutarco/MyAutarco.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MyAutarco/Preview Content\"";
+				DEVELOPMENT_TEAM = DHKZ7WR43P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyAutarco/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sakrist.MyAutarco;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D2EB07192AE5A6E60040D291 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DHKZ7WR43P;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sakrist.MyAutarcoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyAutarco.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyAutarco";
+			};
+			name = Debug;
+		};
+		D2EB071A2AE5A6E60040D291 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DHKZ7WR43P;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sakrist.MyAutarcoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyAutarco.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyAutarco";
+			};
+			name = Release;
+		};
+		D2EB071C2AE5A6E60040D291 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DHKZ7WR43P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sakrist.MyAutarcoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyAutarco;
+			};
+			name = Debug;
+		};
+		D2EB071D2AE5A6E60040D291 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DHKZ7WR43P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sakrist.MyAutarcoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyAutarco;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D2DD1D022AEE59B200473D0B /* Build configuration list for PBXNativeTarget "HousePowerExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2DD1D002AEE59B200473D0B /* Debug */,
+				D2DD1D012AEE59B200473D0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2EB06EC2AE5A6E40040D291 /* Build configuration list for PBXProject "MyAutarco" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2EB07132AE5A6E60040D291 /* Debug */,
+				D2EB07142AE5A6E60040D291 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2EB07152AE5A6E60040D291 /* Build configuration list for PBXNativeTarget "MyAutarco" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2EB07162AE5A6E60040D291 /* Debug */,
+				D2EB07172AE5A6E60040D291 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2EB07182AE5A6E60040D291 /* Build configuration list for PBXNativeTarget "MyAutarcoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2EB07192AE5A6E60040D291 /* Debug */,
+				D2EB071A2AE5A6E60040D291 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2EB071B2AE5A6E60040D291 /* Build configuration list for PBXNativeTarget "MyAutarcoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2EB071C2AE5A6E60040D291 /* Debug */,
+				D2EB071D2AE5A6E60040D291 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D2EB06E92AE5A6E40040D291 /* Project object */;
+}
