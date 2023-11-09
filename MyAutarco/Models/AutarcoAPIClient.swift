@@ -7,12 +7,13 @@
 
 import Foundation
 
-@Observable open class AutarcoAPIClient {
+open class AutarcoAPIClient : ObservableObject {
     
     let apiEndpoint = "https://my.autarco.com/api/site"
     var public_key = ""
     var authData = ""
     var errorMessage = ""
+    @Published var isLoggedIn: Bool = false
     
     static var identifier: String {
 //        return Bundle.main.bundleIdentifier ?? "com.sakrist.MyAutarco"
@@ -22,12 +23,7 @@ import Foundation
     init() {
         if (!ProcessInfo.processInfo.isSwiftUIPreview) {
             authData = retrieveUserAuthData()
-        }
-    }
-    
-    var isLoggedIn: Bool {
-        get {
-            return !authData.isEmpty
+            isLoggedIn = !authData.isEmpty
         }
     }
     
@@ -43,16 +39,19 @@ import Foundation
         if (errorMessage.isEmpty) {
             if let data = authData.data(using: .ascii) {
                 Keychain.save(service: AutarcoAPIClient.identifier, key: "token", data: data)
+                DispatchQueue.main.async {
+                    self.isLoggedIn = !self.authData.isEmpty
+                }
                 return true
             }
         }
-        
         return false
     }
     
     func logout() {
         Keychain.delete(service: AutarcoAPIClient.identifier, key: "token")
         authData = ""
+        isLoggedIn = false
     }
     
     fileprivate func retrieveUserAuthData() -> String {

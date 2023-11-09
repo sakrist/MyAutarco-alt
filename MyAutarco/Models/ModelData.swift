@@ -24,21 +24,24 @@ struct TodayPowerStatus {
 }
 
 
-@Observable final class ModelData {
+final class ModelData : ObservableObject {
         
-    let client = AutarcoAPIClient()
+    @Published var client = AutarcoAPIClient()
     
     var status = NowPowerStatus()
     var statusToday = TodayPowerStatus()
     var inverters = [String]()
     
-    var isLoading = false
+    @Published var isLoading = false
     
-    var date = Date()
+    @Published var date = Date()
     // MARK: - Now
     
     func pullAll() async {
-        isLoading = true
+        DispatchQueue.main.async {
+            self.isLoading = true
+        }
+        
         if (client.public_key.isEmpty) {
             await client.getPublicKey()
         }
@@ -47,7 +50,9 @@ struct TodayPowerStatus {
         
         await consumption(date: date)
         await pullTimeline(date: date)
-        isLoading = false
+        DispatchQueue.main.async {
+            self.isLoading = false
+        }
     }
     
     func power() async {

@@ -12,7 +12,7 @@ struct HousePowerNowView: View {
     
     var divider = true
     
-    @Environment(ModelData.self) private var modelData
+    @EnvironmentObject  var modelData: ModelData
     
     var body: some View {
         VStack {
@@ -66,5 +66,5 @@ extension TodayPowerStatus {
 
 #Preview {
     HousePowerNowView()
-        .environment(ModelData())
+        .environmentObject(ModelData())
 }

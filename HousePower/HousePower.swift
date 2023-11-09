@@ -48,7 +48,7 @@ struct HousePowerEntryView : View {
     var entry: Provider.Entry
     
     
-    @Environment(ModelData.self) var modelData
+    @EnvironmentObject  var modelData: ModelData
 
     var body: some View {
         
@@ -75,12 +75,12 @@ struct HousePower: Widget {
                                provider: Provider(modelData: modelData)) { entry in
             
             HousePowerEntryView(entry: entry)
-                .environment(modelData)
+                .environmentObject(modelData)
                 .containerBackground(for: .widget, content: {
                     if (entry.configuration.graphType == 1) {
                         AreaGraphView( dataPoints: modelData.getDataPoints())
                     } else if (entry.configuration.graphType == 2) {
-                        StackedHistogramView( dataPoints: modelData.getDataPoints())
+                        StackedHistogramView( dataPoints: modelData.getDataPoints(), showLabels: false)
                             .frame(height: 150)
                     }
                 })

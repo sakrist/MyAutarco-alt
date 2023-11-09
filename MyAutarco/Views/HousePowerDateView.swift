@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HousePowerDateView: View {
-    @Environment(ModelData.self) private var modelData
+    @EnvironmentObject var modelData:ModelData
     
     var body: some View {
         VStack {
@@ -35,5 +35,5 @@ struct HousePowerDateView: View {
 
 #Preview {
     HousePowerDateView()
-        .environment(ModelData())
+        .environmentObject(ModelData())
 }

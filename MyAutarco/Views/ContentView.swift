@@ -9,13 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @Environment(ModelData.self) private var modelData
+    @EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var client: AutarcoAPIClient
     
     @State private var firstStart = true
     
     var body: some View {
         VStack {
-            if (modelData.client.isLoggedIn) {
+            if (client.isLoggedIn) {
                 HouseView().task {
                     if (firstStart) {
                         await modelData.pullAll()
@@ -32,5 +33,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environment(ModelData())
+        .environmentObject(ModelData())
 }

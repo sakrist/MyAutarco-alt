@@ -15,7 +15,8 @@ struct MyAutarcoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(modelData)
+                .environmentObject(modelData)
+                .environmentObject(modelData.client)
         }
     }
 }

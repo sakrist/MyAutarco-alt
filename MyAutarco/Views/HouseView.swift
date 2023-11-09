@@ -10,7 +10,7 @@ import WidgetKit
 
 struct HouseView: View {
     
-    @Environment(ModelData.self) private var modelData
+    @EnvironmentObject var modelData:ModelData
     @State var selectedDate:Date = Date()
     @State var useTodayDate = true
     
@@ -42,13 +42,13 @@ struct HouseView: View {
                 
                 Section("Now") {
                     HousePowerNowView()
-                        .environment(modelData)
+                        .environmentObject(modelData)
                 }
                 
                 Section("On the date") {
                     
                     DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
-                        .onChange(of: selectedDate) { _, _ in
+                        .onChange(of: selectedDate) { _ in
                             modelData.date = selectedDate
                             self.useTodayDate = isDateToday(selectedDate)
                             calendarId = UUID()
@@ -66,7 +66,7 @@ struct HouseView: View {
                                 CenterProgressView()
                             }
                         }
-                    }.frame(height: 200)
+                    }.frame(height: 230)
                     
                     VStack {
                         ZStack {
@@ -79,7 +79,7 @@ struct HouseView: View {
                     
                     
                     HousePowerDateView()
-                        .environment(modelData)
+                        .environmentObject(modelData)
                     
                 }
             }.refreshable {
@@ -111,5 +111,5 @@ struct HouseView: View {
 
 #Preview {
     HouseView()
-        .environment(ModelData())
+        .environmentObject(ModelData())
 }

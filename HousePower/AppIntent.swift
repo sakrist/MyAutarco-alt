@@ -8,6 +8,7 @@
 import WidgetKit
 import AppIntents
 
+@available(iOSApplicationExtension 17.0, *)
 struct ConfigurationAppIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource = "House Energy"
     static var description = IntentDescription("Widget to show house energy production and consumption.")

@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-//struct LoginView: View {
-//    var body: some View {
-//        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-//    }
-//}
 
 struct LoginView: View {
     @State private var email = ""
@@ -19,7 +14,7 @@ struct LoginView: View {
     @State private var isLoggingIn = false
     @State private var isLoggedIn = false
     
-    @Environment(ModelData.self) private var modelData
+    @EnvironmentObject var modelData:ModelData
     
     var body: some View {
         NavigationView {
@@ -71,5 +66,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
-        .environment(ModelData())
+        .environmentObject(ModelData())
 }
