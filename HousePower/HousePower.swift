@@ -23,7 +23,7 @@ struct Provider: AppIntentTimelineProvider {
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
         var entries: [SimpleEntry] = []
         
-        modelData.date = Date()
+        modelData.selectedDate = Date()
         await modelData.pullAll()
         
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
@@ -48,7 +48,7 @@ struct HousePowerEntryView : View {
     var entry: Provider.Entry
     
     
-    @EnvironmentObject  var modelData: ModelData
+    @Environment(ModelData.self) private var modelData
 
     var body: some View {
         
@@ -75,7 +75,8 @@ struct HousePower: Widget {
                                provider: Provider(modelData: modelData)) { entry in
             
             HousePowerEntryView(entry: entry)
-                .environmentObject(modelData)
+                .environment(modelData)
+                .modelContainer(for: DayRecord.self)
                 .containerBackground(for: .widget, content: {
                     if (entry.configuration.graphType == 1) {
                         AreaGraphView( dataPoints: modelData.getDataPoints())

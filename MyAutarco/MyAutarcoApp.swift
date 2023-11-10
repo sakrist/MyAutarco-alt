@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MyAutarcoApp: App {
@@ -15,9 +16,10 @@ struct MyAutarcoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(modelData)
-                .environmentObject(modelData.client)
+                .environment(modelData)
         }
+        .modelContainer(for: DayRecord.self)
     }
+
 }
 

@@ -14,7 +14,7 @@ struct LoginView: View {
     @State private var isLoggingIn = false
     @State private var isLoggedIn = false
     
-    @EnvironmentObject var modelData:ModelData
+    @Environment(ModelData.self) private var modelData
     
     var body: some View {
         NavigationView {
@@ -66,5 +66,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
-        .environmentObject(ModelData())
+        .environment(ModelData())
 }

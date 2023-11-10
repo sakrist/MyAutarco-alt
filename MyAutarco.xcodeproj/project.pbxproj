@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D206434B2AF998A300C74A7C /* HousePowerDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D206434A2AF998A300C74A7C /* HousePowerDateView.swift */; };
 		D206434C2AF998F900C74A7C /* HousePowerDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D206434A2AF998A300C74A7C /* HousePowerDateView.swift */; };
+		D207B2132AFD7F840060B3BC /* DayRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B2122AFD7F840060B3BC /* DayRecord.swift */; };
+		D207B2142AFD7F840060B3BC /* DayRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207B2122AFD7F840060B3BC /* DayRecord.swift */; };
 		D20B5EEB2AEF2DBF00BD9EBD /* StackedHistogramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B5EEA2AEF2DBF00BD9EBD /* StackedHistogramView.swift */; };
 		D20B5EEC2AEF2DBF00BD9EBD /* StackedHistogramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B5EEA2AEF2DBF00BD9EBD /* StackedHistogramView.swift */; };
 		D20B5EEE2AEFB54B00BD9EBD /* ModelData+test.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20B5EED2AEFB54B00BD9EBD /* ModelData+test.swift */; };
@@ -89,6 +91,7 @@
 
 /* Begin PBXFileReference section */
 		D206434A2AF998A300C74A7C /* HousePowerDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousePowerDateView.swift; sourceTree = "<group>"; };
+		D207B2122AFD7F840060B3BC /* DayRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRecord.swift; sourceTree = "<group>"; };
 		D20B5EEA2AEF2DBF00BD9EBD /* StackedHistogramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedHistogramView.swift; sourceTree = "<group>"; };
 		D20B5EED2AEFB54B00BD9EBD /* ModelData+test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModelData+test.swift"; sourceTree = "<group>"; };
 		D20B5EF02AEFC16000BD9EBD /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 				D24C4CB32AF844400073B8DA /* AutarcoAPIClient.swift */,
 				D2D655762AFA279000305A09 /* DataPoint.swift */,
 				D2EB071E2AE5A7EC0040D291 /* ModelData.swift */,
+				D207B2122AFD7F840060B3BC /* DayRecord.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -436,6 +440,7 @@
 				D2D42B992AEEB6B700FD15F8 /* HousePowerNowView.swift in Sources */,
 				D2DD1CF82AEE59B000473D0B /* AppIntent.swift in Sources */,
 				D20B5EEF2AEFB54B00BD9EBD /* ModelData+test.swift in Sources */,
+				D207B2142AFD7F840060B3BC /* DayRecord.swift in Sources */,
 				D27947A12AF81A56004462ED /* AreaGraphView.swift in Sources */,
 				D206434C2AF998F900C74A7C /* HousePowerDateView.swift in Sources */,
 				D2D42B962AEEB5E500FD15F8 /* URLResponse+extension.swift in Sources */,
@@ -464,6 +469,7 @@
 				D206434B2AF998A300C74A7C /* HousePowerDateView.swift in Sources */,
 				D20B5EFD2AEFD62C00BD9EBD /* HouseView.swift in Sources */,
 				D2EB06F52AE5A6E40040D291 /* MyAutarcoApp.swift in Sources */,
+				D207B2132AFD7F840060B3BC /* DayRecord.swift in Sources */,
 				D20B5EF12AEFC16000BD9EBD /* Keychain.swift in Sources */,
 				D20B5EEB2AEF2DBF00BD9EBD /* StackedHistogramView.swift in Sources */,
 				D2D655772AFA279000305A09 /* DataPoint.swift in Sources */,
@@ -706,7 +712,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -739,7 +745,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

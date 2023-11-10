@@ -7,8 +7,9 @@
 
 import SwiftUI
 import Foundation
+import SwiftData
 
-struct NowPowerStatus {
+struct NowPowerStatus : Codable {
     var pv:Int = 0 // total PV producing in watt
     var pvSelf:Int = 0 // self consumption of pv energy in watt
     var grid:Int = 0 // consumed from grid in watt
@@ -17,30 +18,39 @@ struct NowPowerStatus {
     var total:Int = 0 // total consumed atm in watt
 }
 
-struct TodayPowerStatus {
+struct TotalPowerStatus : Codable {
     var pv:Int = 0 // today PV produced in kWh
     var grid:Int = 0
     var consumed:Int = 0 // today PV + Grid + Battery consumed in kWh
 }
 
 
-final class ModelData : ObservableObject {
-        
-    @Published var client = AutarcoAPIClient()
+@Observable final class ModelData {
+    
+    public var modelContext: ModelContext?
+    
+    var client = AutarcoAPIClient()
     
     var status = NowPowerStatus()
-    var statusToday = TodayPowerStatus()
+    var totalStatus = TotalPowerStatus()
     var inverters = [String]()
     
-    @Published var isLoading = false
+    var isLoading = false
     
-    @Published var date = Date()
+    var selectedDate = Date()
+    
+    // Function to check if a date is today
+    func isDateToday(_ date: Date) -> Bool {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let otherDate = calendar.startOfDay(for: date)
+        return today == otherDate
+    }
+    
     // MARK: - Now
     
     func pullAll() async {
-        DispatchQueue.main.async {
-            self.isLoading = true
-        }
+        self.isLoading = true
         
         if (client.public_key.isEmpty) {
             await client.getPublicKey()
@@ -48,10 +58,45 @@ final class ModelData : ObservableObject {
         await power()
         await energy()
         
+        await pull(date: selectedDate)
+        self.isLoading = false
+    }
+
+    func pull(date:Date) async {
+        self.isLoading = true
+        defer {
+            self.isLoading = false
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        let dateString = dateFormatter.string(from: date)
+        
+        let isToday = isDateToday(date)
+        
+        if !isToday {
+            var recordsFetch = FetchDescriptor<DayRecord>(predicate: #Predicate { $0.name == dateString })
+            recordsFetch.fetchLimit = 1
+            recordsFetch.includePendingChanges = true
+            let records = try? modelContext?.fetch(recordsFetch)
+            
+            if let found = records?.first {
+                self.totalStatus = found.powerStatus
+                self.dataPoints = found.dataPoints
+                self.isLoading = false
+                return
+            }
+        }
+        
         await consumption(date: date)
         await pullTimeline(date: date)
-        DispatchQueue.main.async {
-            self.isLoading = false
+        
+        if !isToday, let modelContext = modelContext {
+            let record = DayRecord(name: dateString, date: date)
+            record.dataPoints = dataPoints
+            record.powerStatus = totalStatus
+            modelContext.insert(record)
+            try? modelContext.save()
         }
     }
     
@@ -79,7 +124,7 @@ final class ModelData : ObservableObject {
     func energy() async {
         await client.doRequest(path: "kpis/energy") { json in
             if let json = json as? [String: Any] {
-                self.statusToday.pv = Int(json["pv_today"] as? Int ?? 0)
+//                self.totalStatus.pv = Int(json["pv_today"] as? Int ?? 0)
                 self.status.battery_charge = Int(json["battery_soc"] as? Int ?? 0)
             } else {
                 self.client.errorMessage = "Failed to parse kpis/energy"
@@ -117,7 +162,9 @@ final class ModelData : ObservableObject {
             await client.doRequest(path: "inverter/\(inverter)/energy?r=week&d=\(mondayDateString)") { json in
                 if let json = json as? [String: Any] {
                     if let energy = json["energy"] as? [String: Int?] {
-                        consumed += (energy[dateString] ?? 0) ?? 0
+                        let pv = (energy[dateString] ?? 0) ?? 0
+                        self.totalStatus.pv = pv
+                        consumed += pv
                     }
                 }
             }
@@ -129,7 +176,7 @@ final class ModelData : ObservableObject {
             if let json = json as? [String: Any] {
                 if let energy = json["energy"] as? [String: Int?] {
                     let grid = (energy[dateString] ?? 0) ?? 0
-                    self.statusToday.grid = grid
+                    self.totalStatus.grid = grid
                     consumed += grid
                 }
             }
@@ -145,7 +192,7 @@ final class ModelData : ObservableObject {
                 }
             }
         }
-        self.statusToday.consumed = consumed
+        self.totalStatus.consumed = consumed
     }
     
     // MARK: - timeline
@@ -190,14 +237,6 @@ final class ModelData : ObservableObject {
         return dataPoints
     }
     
-    func todayTimeline() async -> [DataPoint]  {
-
-        let inverter = await inverterTimeline()
-        let grid = await gridTimeline()
-        let battery = await batteryTimeline()
-        
-        return ModelData.convertTimeline(inverter, grid, battery)
-    }
     
     static func getPower(jsonData: Data) -> [String: Int?] {
         if let json = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
@@ -207,6 +246,7 @@ final class ModelData : ObservableObject {
         }
         return [:]
     }
+    
     
     var inverterTimelineCache:[String : Int?] = [:]
     var gridTimelineCache:[String : Int?] = [:]
@@ -226,6 +266,17 @@ final class ModelData : ObservableObject {
         dateFormatter.dateFormat = "yyyyMMdd"
         let dateString = dateFormatter.string(from: date)
         
+//        if !isDateToday(date) {
+//            var recordsFetch = FetchDescriptor<DayRecord>(predicate: #Predicate { $0.name == dateString })
+//            recordsFetch.fetchLimit = 1
+//            recordsFetch.includePendingChanges = true
+//            let records = try? modelContext?.fetch(recordsFetch)
+//
+//            if let found = records?.first {
+//                dataPoints = found.dataPoints
+//                return
+//            }
+//        }
         
         if let inverter = self.inverters.first {
             // energy from inverter

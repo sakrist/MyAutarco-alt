@@ -10,7 +10,7 @@ import WidgetKit
 
 struct HouseView: View {
     
-    @EnvironmentObject var modelData:ModelData
+    @Environment(ModelData.self) private var modelData
     @State var selectedDate:Date = Date()
     @State var useTodayDate = true
     
@@ -42,18 +42,17 @@ struct HouseView: View {
                 
                 Section("Now") {
                     HousePowerNowView()
-                        .environmentObject(modelData)
                 }
                 
                 Section("On the date") {
                     
                     DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
-                        .onChange(of: selectedDate) { _ in
-                            modelData.date = selectedDate
+                        .onChange(of: selectedDate) { _, _ in
+                            modelData.selectedDate = selectedDate
                             self.useTodayDate = isDateToday(selectedDate)
                             calendarId = UUID()
                             Task {
-                                await modelData.pullAll()
+                                await modelData.pull(date:selectedDate)
                             }
                         }
                         .id(calendarId)
@@ -79,13 +78,11 @@ struct HouseView: View {
                     
                     
                     HousePowerDateView()
-                        .environmentObject(modelData)
-                    
                 }
             }.refreshable {
                 Task {
                     if (self.useTodayDate) {
-                        modelData.date = Date()
+                        modelData.selectedDate = Date()
                     }
                     await modelData.pullAll()
                     
@@ -111,5 +108,5 @@ struct HouseView: View {
 
 #Preview {
     HouseView()
-        .environmentObject(ModelData())
+        .environment(ModelData())
 }

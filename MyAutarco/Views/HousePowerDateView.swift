@@ -8,26 +8,26 @@
 import SwiftUI
 
 struct HousePowerDateView: View {
-    @EnvironmentObject var modelData:ModelData
+    @Environment(ModelData.self) private var modelData
     
     var body: some View {
         VStack {
             HStack {
                 Text("PV Panels")
                 Spacer()
-                Text("\(modelData.statusToday.pv) kWh")
+                Text("\(modelData.totalStatus.pv) kWh")
             }
             
             HStack {
                 Text("Grid")
                 Spacer()
-                Text("\(modelData.statusToday.grid) kWh")
+                Text("\(modelData.totalStatus.grid) kWh")
             }
             
             HStack {
                 Text("Consumed")
                 Spacer()
-                Text("\(modelData.statusToday.consumed) kWh")
+                Text("\(modelData.totalStatus.consumed) kWh")
             }
         }
     }
@@ -35,5 +35,5 @@ struct HousePowerDateView: View {
 
 #Preview {
     HousePowerDateView()
-        .environmentObject(ModelData())
+        .environment(ModelData())
 }

@@ -12,7 +12,7 @@ struct HousePowerNowView: View {
     
     var divider = true
     
-    @EnvironmentObject  var modelData: ModelData
+    @Environment(ModelData.self) private var modelData
     
     var body: some View {
         VStack {
@@ -57,14 +57,16 @@ extension NowPowerStatus {
         return intent
     }
 }
-extension TodayPowerStatus {
-    fileprivate static var today: TodayPowerStatus {
-        let intent = TodayPowerStatus(pv: 20, consumed: 13)
+extension TotalPowerStatus {
+    fileprivate static var today: TotalPowerStatus {
+        var intent = TotalPowerStatus()
+        intent.pv = 20
+        intent.consumed = 13
         return intent
     }
 }
 
 #Preview {
     HousePowerNowView()
-        .environmentObject(ModelData())
+        .environment(ModelData())
 }
