@@ -12,7 +12,6 @@ struct HouseView: View {
     
     @Environment(ModelData.self) private var modelData
     @State var selectedDate:Date = Date()
-    @State var useTodayDate = true
     
     
     // Function to check if a date is today
@@ -48,8 +47,6 @@ struct HouseView: View {
                     
                     DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
                         .onChange(of: selectedDate) { _, _ in
-                            modelData.selectedDate = selectedDate
-                            self.useTodayDate = isDateToday(selectedDate)
                             calendarId = UUID()
                             Task {
                                 await modelData.pull(date:selectedDate)
@@ -81,10 +78,8 @@ struct HouseView: View {
                 }
             }.refreshable {
                 Task {
-                    if (self.useTodayDate) {
-                        modelData.selectedDate = Date()
-                    }
-                    await modelData.pullAll()
+                    selectedDate = Date()
+                    await modelData.pullAllToday()
                     
                     WidgetCenter.shared.reloadAllTimelines()
                 }

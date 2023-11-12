@@ -49,16 +49,44 @@ struct TotalPowerStatus : Codable {
     
     // MARK: - Now
     
-    func pullAll() async {
+    func pullAllToday() async {
         self.isLoading = true
+        
+        selectedDate = Date()
         
         if (client.public_key.isEmpty) {
             await client.getPublicKey()
         }
+        
+        if (self.inverters.isEmpty) {
+            await power()
+        }
+        
+        var recordsFetch = FetchDescriptor<DayRecord>(predicate: #Predicate { $0.name == "today" })
+        recordsFetch.fetchLimit = 1
+        recordsFetch.includePendingChanges = true
+        let records = try? modelContext?.fetch(recordsFetch)
+        
+        if let found = records?.first, selectedDate.timeIntervalSince(found.date) < 290 {
+            self.status = found.nowStatus
+            self.totalStatus = found.powerStatus
+            self.dataPoints = found.dataPoints.map { $0 }
+            self.isLoading = false
+            return
+        }
+        
         await power()
         await energy()
         
         await pull(date: selectedDate)
+        
+        let record = DayRecord(name: "today", date: selectedDate)
+        record.nowStatus = status
+        record.dataPoints = dataPoints.map { $0 }
+        record.powerStatus = totalStatus
+        modelContext?.insert(record)
+        try? modelContext?.save()
+        
         self.isLoading = false
     }
 
@@ -66,6 +94,10 @@ struct TotalPowerStatus : Codable {
         self.isLoading = true
         defer {
             self.isLoading = false
+        }
+        
+        if (self.inverters.isEmpty) {
+            await power()
         }
         
         let dateFormatter = DateFormatter()
@@ -82,18 +114,22 @@ struct TotalPowerStatus : Codable {
             
             if let found = records?.first {
                 self.totalStatus = found.powerStatus
-                self.dataPoints = found.dataPoints
-                self.isLoading = false
-                return
+                self.dataPoints = found.dataPoints.map { $0 }
+                if (self.dataPoints.count > 0 ) {
+                    self.isLoading = false
+                    return
+                }
             }
         }
+        
+        
         
         await consumption(date: date)
         await pullTimeline(date: date)
         
         if !isToday, let modelContext = modelContext {
             let record = DayRecord(name: dateString, date: date)
-            record.dataPoints = dataPoints
+            record.dataPoints = dataPoints.map { $0 }
             record.powerStatus = totalStatus
             modelContext.insert(record)
             try? modelContext.save()

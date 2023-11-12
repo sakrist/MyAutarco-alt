@@ -19,29 +19,38 @@ struct StackedRectangle: View {
     var widthPerRectangle: CGFloat
     var maxConsumption: CGFloat
     var height: CGFloat
+    
+    func getColor() -> Color {
+        let color: Color
+        switch type {
+        case .Inverter:
+            color = .orange
+        case .Grid:
+            color = .gray
+        case .Battery:
+            color = .green
+        }
+        return color
+    }
+    
+    func getHeight() -> CGFloat {
+        var value = dataPoint.values[type.rawValue]
+        switch type {
+        case .Inverter:
+            value = min(value, dataPoint.consumption)
+        case .Grid:
+            value = max(0, value) // don't show when giving to grid
+        case .Battery:
+            value = abs(min(0, value)) // don't show when battery charging
+        }
+
+        return CGFloat(value) / maxConsumption * height
+    }
 
     var body: some View {
-        let color: Color
-
-        var value = dataPoint.values[type.rawValue]
-
-            switch type {
-            case .Inverter:
-                color = .orange
-                value = min(value, dataPoint.consumption)
-            case .Grid:
-                color = .gray
-                value = max(0, value) // don't show when giving to grid
-            case .Battery:
-                color = .green
-                value = abs(min(0, value)) // don't show when battery charging
-            }
-
-        let rheight = CGFloat(value) / maxConsumption * height
-
-        return Rectangle()
-            .fill(color)
-            .frame(width: widthPerRectangle, height: rheight) // Adjust the height scaling factor as needed
+        Rectangle()
+            .fill(getColor())
+            .frame(width: widthPerRectangle, height: getHeight()) // Adjust the height scaling factor as needed
     }
 }
 

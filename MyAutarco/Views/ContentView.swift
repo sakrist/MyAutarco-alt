@@ -20,7 +20,7 @@ struct ContentView: View {
                 HouseView().task {
                     if (firstStart) {
                         modelData.modelContext = modelContext
-                        await modelData.pullAll()
+                        await modelData.pullAllToday()
                         firstStart = false
                     }
                 }

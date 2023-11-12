@@ -23,8 +23,7 @@ struct Provider: AppIntentTimelineProvider {
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
         var entries: [SimpleEntry] = []
         
-        modelData.selectedDate = Date()
-        await modelData.pullAll()
+        await modelData.pullAllToday()
         
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
