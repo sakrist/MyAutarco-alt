@@ -114,11 +114,13 @@ open class AutarcoAPIClient : ObservableObject {
         }
         
         await doRequest(path: "") { json in
-            if let json = json as? [Any] {
+            if let json = json as? [String : Any] {
                 if (json.count > 0) {
-                    if let site = json[0] as? [String : String] {
-                        self.public_key = site["public_key"] ?? ""
-                        return
+                    if let data = json["data"] as? [Any] {
+                        if let site = data[0] as? [String : Any] {
+                            self.public_key = site["public_key"] as? String ?? ""
+                            return
+                        }
                     }
                 }
             }
