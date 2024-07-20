@@ -88,6 +88,16 @@ open class AutarcoAPIClient : ObservableObject {
                     do {
                         let (data, response) = try await URLSession.shared.data(for: powerRequest)
                         if response.getStatusCode() == 200 {
+                            
+                            #if DEBUG
+                            if let string = String(data: data, encoding: .utf8) {
+                                print("response for path: " + path)
+                                print(string)
+                            } else {
+                                print("Failed to convert Data to String")
+                            }
+                            #endif
+                            
                             if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
                                 completion(json)
                             } else {

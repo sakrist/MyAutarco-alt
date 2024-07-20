@@ -170,6 +170,10 @@ struct TotalPowerStatus : Codable {
     
     // MARK: - consumption today
     
+    
+    /// Stats right now!
+    /// - Parameters:
+    ///   - date: for the day need data
     func consumption(date:Date) async {
         
         var mondayDateString = ""
@@ -246,14 +250,15 @@ struct TotalPowerStatus : Codable {
         
         // Iterate over the keys (dates) in one of the dictionaries (assuming they all have the same keys)
         for date in inverter.keys {
-            if let inverterValue = inverter[date] as? Int, 
-                let gridValue = grid[date] as? Int,
-                let batteryValue = battery[date] as? Int {
+            if let inverterValue = inverter[date],
+                let gridValue = grid[date],
+                let batteryValue = battery[date] {
+                    
+                let inverterValue = max(inverterValue ?? 0, 0)
+                let batteryValue = batteryValue ?? 0
+                let gridValue = gridValue ?? 0
                 
                 let consumption = max(0, inverterValue + gridValue - batteryValue)
-                let batteryValue = batteryValue
-                let inverterValue = max(0, inverterValue)
-                let gridValue = gridValue
                 
                 if let dateObject = dateFormatter.date(from: date) {
                     
@@ -265,7 +270,11 @@ struct TotalPowerStatus : Codable {
                                               consumption: consumption,
                                               values: [inverterValue, gridValue, batteryValue] )
                     dataPoints.append(dataPoint)
+                } else {
+                    print("failed to convert \(date) to minutes")
                 }
+            } else {
+                print("no data for \(date)")
             }
         }
         
@@ -296,7 +305,12 @@ struct TotalPowerStatus : Codable {
         return dataPoints
     }
     
-    func pullTimeline(date:Date) async {
+    
+    /// Timeline for a day
+    /// - Parameters:
+    ///   - date: day
+    ///   - interval: interval between readings
+    func pullTimeline(date:Date, interval:Int = 15) async {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
@@ -317,7 +331,7 @@ struct TotalPowerStatus : Codable {
         if let inverter = self.inverters.first {
             // energy from inverter
             //    https://my.autarco.com/api/site/[api_key]/inverter/[inverter]/power?r=day&d=20231029
-            await client.doRequest(path: "inverter/\(inverter)/power?r=day&d=\(dateString)") { json in
+            await client.doRequest(path: "inverter/\(inverter)/power?r=day&d=\(dateString)&i=\(interval)") { json in
                 if let json = json as? [String: Any] {
                     if let power = json["power"] as? [String : Int?] {
                         self.inverterTimelineCache = power
@@ -326,7 +340,7 @@ struct TotalPowerStatus : Codable {
             }
         }
         
-        await client.doRequest(path: "consumption/power?r=day&d=\(dateString)") { json in
+        await client.doRequest(path: "consumption/power?r=day&d=\(dateString)&i=\(interval)") { json in
             if let json = json as? [String: Any] {
                 if let power = json["power"] as? [String: Int?] {
                     self.gridTimelineCache = power
@@ -334,7 +348,7 @@ struct TotalPowerStatus : Codable {
             }
         }
         
-        await client.doRequest(path: "batterypack/power?r=day&d=\(dateString)") { json in
+        await client.doRequest(path: "batterypack/power?r=day&d=\(dateString)&i=\(interval)") { json in
             if let json = json as? [String: Any] {
                 if let power = json["power"] as? [String: Int?] {
                     self.batteryTimelineCache = power
