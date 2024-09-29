@@ -8,32 +8,32 @@
 import SwiftUI
 
 struct HousePowerDateView: View {
-    @Environment(ModelData.self) private var modelData
+    var record: DayRecord
     
     var body: some View {
         VStack {
             HStack {
                 Text("PV Panels")
                 Spacer()
-                Text("\(modelData.totalStatus.pv) kWh")
+                Text("\(record.summary.pv) kWh")
             }
             
             HStack {
                 Text("Grid")
                 Spacer()
-                Text("\(modelData.totalStatus.grid) kWh")
+                Text("\(record.summary.grid) kWh")
             }
             
             HStack {
                 Text("Consumed")
                 Spacer()
-                Text("\(modelData.totalStatus.consumed) kWh")
+                Text("\(record.summary.consumed) kWh")
             }
         }
     }
 }
 
 #Preview {
-    HousePowerDateView()
-        .environment(ModelData())
+    let record = DayRecord(name: "Today", date: .now)
+    HousePowerDateView(record: record)
 }

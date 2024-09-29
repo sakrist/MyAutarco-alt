@@ -11,28 +11,27 @@ import SwiftUI
 struct HousePowerNowView: View {
     
     var divider = true
-    
-    @Environment(ModelData.self) private var modelData
+    var record: DayRecord
     
     var body: some View {
         VStack {
             HStack {
                 Text("PV Panels")
                 Spacer()
-                Text("\(String(modelData.status.pvSelf)) (\(String(modelData.status.pv))) w")
+                Text("\(String(record.now.pvSelf)) (\(String(record.now.pv))) w")
             }
             
             HStack {
                 Text("Grid")
                 Spacer()
-                Text("\(String(modelData.status.grid)) w")
+                Text("\(String(record.now.grid)) w")
             }
             
             HStack {
-                Text("Battery (\(modelData.status.battery_charge))%")
+                Text("Battery (\(record.now.battery_charge))%")
                 Spacer()
-                Text("\(String(modelData.status.battery)) w")
-                    .foregroundStyle( (modelData.status.battery == 0) ? .primary : (modelData.status.battery > 0 ) ? Color.green : Color.red )
+                Text("\(String(record.now.battery)) w")
+                    .foregroundStyle( (record.now.battery == 0) ? .primary : (record.now.battery > 0 ) ? Color.green : Color.red )
             }
             
             if (divider) {
@@ -42,7 +41,7 @@ struct HousePowerNowView: View {
             HStack {
                 Text("Total")
                 Spacer()
-                Text("\(String(modelData.status.total)) w")
+                Text("\(String(record.now.total)) w")
             }
                 
         }
@@ -57,9 +56,9 @@ extension NowPowerStatus {
         return intent
     }
 }
-extension TotalPowerStatus {
-    fileprivate static var today: TotalPowerStatus {
-        var intent = TotalPowerStatus()
+extension SummaryPowerStatus {
+    fileprivate static var today: SummaryPowerStatus {
+        var intent = SummaryPowerStatus()
         intent.pv = 20
         intent.consumed = 13
         return intent
@@ -67,6 +66,6 @@ extension TotalPowerStatus {
 }
 
 #Preview {
-    HousePowerNowView()
-        .environment(ModelData())
+    let record = DayRecord(name: "Today", date: .now)
+    HousePowerNowView(record: record)
 }

@@ -40,7 +40,7 @@ struct HouseView: View {
             List {
                 
                 Section("Now") {
-                    HousePowerNowView()
+                    HousePowerNowView(record: modelData.today)
                 }
                 
                 Section("On the date") {
@@ -74,7 +74,7 @@ struct HouseView: View {
                     }.frame(height: 50)
                     
                     
-                    HousePowerDateView()
+                    HousePowerDateView(record: modelData.today)
                 }
             }.refreshable {
                 Task {

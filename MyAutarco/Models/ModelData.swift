@@ -18,9 +18,9 @@ struct NowPowerStatus : Codable {
     var total:Int = 0 // total consumed atm in watt
 }
 
-struct TotalPowerStatus : Codable {
+struct SummaryPowerStatus : Codable {
     var pv:Int = 0 // today PV produced in kWh
-    var grid:Int = 0
+    var grid:Int = 0 // consumed from grid, if negative then it is given to grid
     var consumed:Int = 0 // today PV + Grid + Battery consumed in kWh
 }
 
@@ -31,8 +31,8 @@ struct TotalPowerStatus : Codable {
     
     var client = AutarcoAPIClient()
     
-    var status = NowPowerStatus()
-    var totalStatus = TotalPowerStatus()
+    var today = DayRecord(name: "Today", date: .now)
+
     var inverters = [String]()
     
     var isLoading = false
@@ -68,8 +68,8 @@ struct TotalPowerStatus : Codable {
         let records = try? modelContext?.fetch(recordsFetch)
         
         if let found = records?.first, selectedDate.timeIntervalSince(found.date) < 290 {
-            self.status = found.nowStatus
-            self.totalStatus = found.powerStatus
+            self.today.now = found.now
+            self.today.summary = found.summary
             self.dataPoints = found.dataPoints.map { $0 }
             self.isLoading = false
             return
@@ -81,9 +81,9 @@ struct TotalPowerStatus : Codable {
         await pull(date: selectedDate)
         
         let record = DayRecord(name: "today", date: selectedDate)
-        record.nowStatus = status
+        record.now = today.now
         record.dataPoints = dataPoints.map { $0 }
-        record.powerStatus = totalStatus
+        record.summary = today.summary
         modelContext?.insert(record)
         try? modelContext?.save()
         
@@ -113,7 +113,7 @@ struct TotalPowerStatus : Codable {
             let records = try? modelContext?.fetch(recordsFetch)
             
             if let found = records?.first {
-                self.totalStatus = found.powerStatus
+                self.today.summary = found.summary
                 self.dataPoints = found.dataPoints.map { $0 }
                 if (self.dataPoints.count > 0 ) {
                     self.isLoading = false
@@ -130,7 +130,7 @@ struct TotalPowerStatus : Codable {
         if !isToday, let modelContext = modelContext {
             let record = DayRecord(name: dateString, date: date)
             record.dataPoints = dataPoints.map { $0 }
-            record.powerStatus = totalStatus
+            record.summary = today.summary
             modelContext.insert(record)
             try? modelContext.save()
         }
@@ -139,12 +139,12 @@ struct TotalPowerStatus : Codable {
     func power() async {
         await client.doRequest(path: "kpis/power") { json in
             if let json = json as? [String: Any] {
-                self.status.pv = Int(json["pv_now"] as? Int ?? 0)
-                self.status.grid = Int(json["consumed_now"] as? Int ?? 0)
-                self.status.battery = Int(json["battery_now"] as? Int ?? 0)
+                self.today.now.pv = Int(json["pv_now"] as? Int ?? 0)
+                self.today.now.grid = Int(json["consumed_now"] as? Int ?? 0)
+                self.today.now.battery = Int(json["battery_now"] as? Int ?? 0)
                 
-                self.status.total = max(0, self.status.pv + self.status.grid - self.status.battery)
-                self.status.pvSelf = max(0, min(self.status.pv + self.status.grid, self.status.pv));
+                self.today.now.total = max(0, self.today.now.pv + self.today.now.grid - self.today.now.battery)
+                self.today.now.pvSelf = max(0, min(self.today.now.pv + self.today.now.grid, self.today.now.pv));
                 
                 if self.inverters.count == 0, let invs = json["inverters"] as? [String : Any ] {
                     for item in invs {
@@ -161,7 +161,7 @@ struct TotalPowerStatus : Codable {
         await client.doRequest(path: "kpis/energy") { json in
             if let json = json as? [String: Any] {
 //                self.totalStatus.pv = Int(json["pv_today"] as? Int ?? 0)
-                self.status.battery_charge = Int(json["battery_soc"] as? Int ?? 0)
+                self.today.now.battery_charge = Int(json["battery_soc"] as? Int ?? 0)
             } else {
                 self.client.errorMessage = "Failed to parse kpis/energy"
             }
@@ -203,7 +203,7 @@ struct TotalPowerStatus : Codable {
                 if let json = json as? [String: Any] {
                     if let energy = json["energy"] as? [String: Int?] {
                         let pv = (energy[dateString] ?? 0) ?? 0
-                        self.totalStatus.pv = pv
+                        self.today.summary.pv = pv
                         consumed += pv
                     }
                 }
@@ -216,7 +216,7 @@ struct TotalPowerStatus : Codable {
             if let json = json as? [String: Any] {
                 if let energy = json["energy"] as? [String: Int?] {
                     let grid = (energy[dateString] ?? 0) ?? 0
-                    self.totalStatus.grid = grid
+                    self.today.summary.grid = grid
                     consumed += grid
                 }
             }
@@ -232,7 +232,7 @@ struct TotalPowerStatus : Codable {
                 }
             }
         }
-        self.totalStatus.consumed = consumed
+        self.today.summary.consumed = consumed
     }
     
     // MARK: - timeline

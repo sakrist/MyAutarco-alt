@@ -8,11 +8,12 @@
 import WidgetKit
 import AppIntents
 
+
 @available(iOSApplicationExtension 17.0, *)
 struct ConfigurationAppIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource = "House Energy"
     static var description = IntentDescription("Widget to show house energy production and consumption.")
-    
+    static var isUpdating: Bool = false
     @Parameter(title: "Graph Type", default: 1)
     var graphType: Int
 }

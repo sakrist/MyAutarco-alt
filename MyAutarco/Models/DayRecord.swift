@@ -13,8 +13,8 @@ final class DayRecord {
     @Attribute(.unique) var name: String
     var date: Date
     var dataPoints = [DataPoint]()
-    var nowStatus = NowPowerStatus()
-    var powerStatus = TotalPowerStatus()
+    var now = NowPowerStatus()
+    var summary = SummaryPowerStatus()
     
     init(name: String, date: Date) {
         self.name = name
