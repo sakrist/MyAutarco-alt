@@ -40,7 +40,7 @@ struct AreaRectangle: View {
 
         return Rectangle()
             .fill(color)
-            .frame(width: widthPerRectangle, height: height) // Adjust the height scaling factor as needed
+            .frame(width: max(0, widthPerRectangle), height: max(0, height)) // Adjust the height scaling factor as needed
     }
 }
 

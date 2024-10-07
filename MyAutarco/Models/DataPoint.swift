@@ -16,6 +16,21 @@ struct DataPoint : Hashable, Codable {
     var timeNormalized: Double // value from 0 to 1
     var consumption: Int // sum of 3 input to calculate what house is consuming atm,  max(0, inverterValue + gridValue - batteryValue)
     var values: [Int] // [inverter, grid, battery]
+
+    func getValue(at index:Int) -> Int {
+        var value:Int = values[index]
+        switch index {
+        case 0:
+            value = min(value, consumption)
+        case 1:
+            value = max(0, value) // don't show when giving to grid
+        case 2:
+            value = abs(min(0, value)) // don't show when battery charging
+        default:
+            break
+        }
+        return value
+    }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(time)
