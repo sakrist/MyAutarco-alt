@@ -11,6 +11,8 @@ import WidgetKit
 struct HouseView: View {
     
     @Environment(ModelData.self) private var modelData
+    @EnvironmentObject var client: AutarcoAPIClient
+    
     @State var selectedDate:Date = Date()
     
     
@@ -88,8 +90,9 @@ struct HouseView: View {
             Spacer()
             
             Button("Logout") {
+                client.isLoggedIn = false
                 Task {
-                    modelData.client.logout()
+                    client.logout()
                 }
             }.buttonStyle(.bordered)
                 .foregroundStyle(.red)
@@ -103,5 +106,5 @@ struct HouseView: View {
 
 #Preview {
     HouseView()
-        .environment(ModelData())
+        .environment(ModelData.shared)
 }

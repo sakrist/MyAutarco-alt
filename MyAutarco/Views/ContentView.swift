@@ -6,33 +6,37 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ContentView: View {
     
     @Environment(ModelData.self) private var modelData
     @Environment(\.modelContext) private var modelContext
     
+    @EnvironmentObject var client: AutarcoAPIClient
+    
+    
     @State private var firstStart = true
     
     var body: some View {
         VStack {
-            if (modelData.client.isLoggedIn) {
+            if (client.isLoggedIn) {
                 HouseView().task {
                     if (firstStart) {
                         modelData.modelContext = modelContext
                         await modelData.pullAllToday()
                         firstStart = false
+                        WidgetCenter.shared.reloadAllTimelines()
                     }
                 }
             } else {
                 LoginView()
             }
-            
         }
     }
 }
 
 #Preview {
     ContentView()
-        .environment(ModelData())
+        .environment(ModelData.shared)
 }

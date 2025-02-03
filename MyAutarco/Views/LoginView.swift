@@ -11,10 +11,10 @@ import SwiftUI
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
-    @State private var isLoggingIn = false
-    @State private var isLoggedIn = false
+    @State private var loginInProgress = false
     
     @Environment(ModelData.self) private var modelData
+    @EnvironmentObject var client: AutarcoAPIClient
     
     var body: some View {
         NavigationView {
@@ -28,35 +28,36 @@ struct LoginView: View {
                 }
 
                 Section {
-                    if (isLoggingIn) {
+                    if (client.isLoggedIn) {
                         ProgressView()
                                     .progressViewStyle(CircularProgressViewStyle())
                     } else {
                         Button(action: {
-                            isLoggingIn = true
-                            
+                            loginInProgress = true
+                            let emailStr = email
+                            let passwordStr = password
                             Task {
-                                isLoggedIn = await modelData.client.login(user:email, password: password)
+                                client.isLoggedIn = await client.login(user:emailStr, password: passwordStr)
                                 await modelData.power()
                                 await modelData.energy()
-                                isLoggingIn = false
+                                loginInProgress = false
                             }
                             
                         }) {
                             Text("Log In")
-                        }.disabled(isLoggingIn || email.isEmpty || password.isEmpty)
+                        }.disabled(loginInProgress || email.isEmpty || password.isEmpty)
                     }
                 }
                 
-                if (!modelData.client.errorMessage.isEmpty) {
+                if (!client.errorMessage.isEmpty) {
                     Section {
-                        Text(modelData.client.errorMessage)
+                        Text(client.errorMessage)
                             .foregroundStyle(.red)
                     }
                 }
             }
             .navigationBarTitle("Login page")
-            .navigationDestination(isPresented: $isLoggedIn) {
+            .navigationDestination(isPresented: $client.isLoggedIn) {
                 HouseView()
             }
         }
@@ -66,5 +67,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
-        .environment(ModelData())
+        .environment(ModelData.shared)
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 import Foundation
 import SwiftData
+import WidgetKit
 
 struct NowPowerStatus : Codable {
     var pv:Int = 0 // total PV producing in watt
@@ -29,7 +30,9 @@ struct SummaryPowerStatus : Codable {
     
     public var modelContext: ModelContext?
     
-    var client = AutarcoAPIClient()
+    static let shared = ModelData()
+    
+    let client = AutarcoAPIClient()
     
     var today = DayRecord(name: "Today", date: .now)
 
@@ -86,7 +89,7 @@ struct SummaryPowerStatus : Codable {
         record.summary = today.summary
         modelContext?.insert(record)
         try? modelContext?.save()
-        
+         
         self.isLoading = false
     }
 
@@ -390,5 +393,5 @@ extension EnvironmentValues {
 }
 
 private struct ModelDataKey: EnvironmentKey {
-    static var defaultValue: ModelData = ModelData()
+    static var defaultValue: ModelData = ModelData.shared
 }

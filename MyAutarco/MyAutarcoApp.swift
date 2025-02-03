@@ -11,14 +11,15 @@ import SwiftData
 @main
 struct MyAutarcoApp: App {
     
-    @State private var modelData = ModelData()
+    let modelData = ModelData.shared
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(modelData)
         }
         .modelContainer(for: DayRecord.self)
+        .environment(modelData)
+        .environmentObject(modelData.client)
     }
 
 }

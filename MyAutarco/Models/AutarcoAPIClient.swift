@@ -39,9 +39,6 @@ open class AutarcoAPIClient : ObservableObject {
         if (errorMessage.isEmpty) {
             if let data = authData.data(using: .ascii) {
                 Keychain.save(service: AutarcoAPIClient.identifier, key: "token", data: data)
-                DispatchQueue.main.async {
-                    self.isLoggedIn = !self.authData.isEmpty
-                }
                 return true
             }
         }
@@ -51,7 +48,6 @@ open class AutarcoAPIClient : ObservableObject {
     func logout() {
         Keychain.delete(service: AutarcoAPIClient.identifier, key: "token")
         authData = ""
-        isLoggedIn = false
     }
     
     fileprivate func retrieveUserAuthData() -> String {

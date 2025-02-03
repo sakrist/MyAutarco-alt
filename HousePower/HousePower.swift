@@ -15,7 +15,7 @@ struct Provider: AppIntentTimelineProvider {
         
     func placeholder(in context: Context) -> SimpleEntry {
         let record = DayRecord(name: "today", date: Date())
-        var config = ConfigurationAppIntent()
+        let config = ConfigurationAppIntent()
         ConfigurationAppIntent.isUpdating = true
         return SimpleEntry(date: Date(), configuration: config, record:record)
     }
@@ -41,7 +41,7 @@ struct Provider: AppIntentTimelineProvider {
         record.dataPoints = modelData.getDataPoints()
         record.summary = modelData.today.summary
 
-        let oneHourLater = Calendar.current.date(byAdding: .hour, value: 1, to: .now) ?? .now
+        let oneHourLater = Calendar.current.date(byAdding: .hour, value: 3, to: .now) ?? .now
         let entry = SimpleEntry(date: oneHourLater, configuration: configuration, record: record)
         ConfigurationAppIntent.isUpdating = false
         return Timeline(entries: [entry], policy: .atEnd)
@@ -74,7 +74,7 @@ struct HousePowerEntryView : View {
 struct HousePower: Widget {
     let kind: String = "House Power"
 
-    @State private var modelData = ModelData()
+    let modelData = ModelData.shared
     
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, 
