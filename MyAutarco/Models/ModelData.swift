@@ -302,7 +302,7 @@ struct SummaryPowerStatus : Codable {
     private var dataPoints:[DataPoint] = []
     
     func getDataPoints() -> [DataPoint] {
-        if (ProcessInfo.processInfo.isSwiftUIPreview) {
+        if (ProcessInfo.processInfo.isSwiftUIPreview || client.isTest) {
             return ModelData.todayTimelineMock()
         }
         return dataPoints

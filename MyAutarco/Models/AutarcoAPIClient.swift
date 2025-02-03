@@ -13,6 +13,7 @@ open class AutarcoAPIClient : ObservableObject {
     var public_key = ""
     var authData = ""
     var errorMessage = ""
+    @Published var isTest: Bool = false
     @Published var isLoggedIn: Bool = false
     
     static var identifier: String {
@@ -29,6 +30,11 @@ open class AutarcoAPIClient : ObservableObject {
     
     func login(user: String, password: String) async -> Bool {
         clearError()
+        
+        if (user == "test") {
+            isTest = true
+            return true
+        }
         
         if let d = (user + ":" + password).data(using: .utf8) {
             authData = d.base64EncodedString()
@@ -48,6 +54,7 @@ open class AutarcoAPIClient : ObservableObject {
     func logout() {
         Keychain.delete(service: AutarcoAPIClient.identifier, key: "token")
         authData = ""
+        isTest = false
     }
     
     fileprivate func retrieveUserAuthData() -> String {
@@ -109,7 +116,7 @@ open class AutarcoAPIClient : ObservableObject {
                 }
             }
         } else {
-            self.errorMessage = "Failed to create request for \(path)"
+            self.errorMessage = "Failed to request \(path)"
         }
     }
     
