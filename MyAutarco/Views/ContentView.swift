@@ -26,7 +26,9 @@ struct ContentView: View {
                         modelData.modelContext = modelContext
                         await modelData.pullAllToday()
                         firstStart = false
-                        WidgetCenter.shared.reloadAllTimelines()
+                        DispatchQueue.main.async {
+                            WidgetCenter.shared.reloadAllTimelines()
+                        }
                     }
                 }
             } else {

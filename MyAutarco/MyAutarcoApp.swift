@@ -13,11 +13,12 @@ struct MyAutarcoApp: App {
     
     let modelData = ModelData.shared
     
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: DayRecord.self)
+        .modelContainer(modelData.modelContainer)
         .environment(modelData)
         .environmentObject(modelData.client)
     }

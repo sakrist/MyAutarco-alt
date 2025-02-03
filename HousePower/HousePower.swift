@@ -25,9 +25,9 @@ struct Provider: AppIntentTimelineProvider {
         await modelData.pullAllToday()
         
         let record = DayRecord(name: "today", date: Date())
-        record.now = modelData.today.now
-        record.dataPoints = modelData.getDataPoints()
-        record.summary = modelData.today.summary
+        record.now = await modelData.today.now
+        record.dataPoints = await modelData.getDataPoints()
+        record.summary = await modelData.today.summary
         let entry = SimpleEntry(date: .now, configuration: configuration, record: record)
         ConfigurationAppIntent.isUpdating = false
         return entry
@@ -37,9 +37,9 @@ struct Provider: AppIntentTimelineProvider {
         ConfigurationAppIntent.isUpdating = true
         await modelData.pullAllToday()
         let record = DayRecord(name: "today", date: Date())
-        record.now = modelData.today.now
-        record.dataPoints = modelData.getDataPoints()
-        record.summary = modelData.today.summary
+        record.now = await modelData.today.now
+        record.dataPoints = await modelData.getDataPoints()
+        record.summary = await modelData.today.summary
 
         let oneHourLater = Calendar.current.date(byAdding: .hour, value: 3, to: .now) ?? .now
         let entry = SimpleEntry(date: oneHourLater, configuration: configuration, record: record)

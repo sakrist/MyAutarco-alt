@@ -83,7 +83,9 @@ struct HouseView: View {
                     selectedDate = Date()
                     await modelData.pullAllToday()
                     
-                    WidgetCenter.shared.reloadAllTimelines()
+                    DispatchQueue.main.async {
+                        WidgetCenter.shared.reloadAllTimelines()
+                    }
                 }
             }
             

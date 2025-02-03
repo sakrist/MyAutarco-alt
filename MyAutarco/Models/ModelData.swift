@@ -25,14 +25,24 @@ struct SummaryPowerStatus : Codable {
     var consumed:Int = 0 // today PV + Grid + Battery consumed in kWh
 }
 
+enum SchemaLatest : VersionedSchema {
+    static var versionIdentifier = Schema.Version(1, 0, 0)
+    
+    static var models: [any PersistentModel.Type] {
+        [DayRecord.self]
+    }
+}
 
-@Observable final class ModelData {
+@MainActor
+@Observable
+final class ModelData {
     
     public var modelContext: ModelContext?
     
     static let shared = ModelData()
     
     let client = AutarcoAPIClient()
+    let modelContainer: ModelContainer
     
     var today = DayRecord(name: "Today", date: .now)
 
@@ -41,6 +51,21 @@ struct SummaryPowerStatus : Codable {
     var isLoading = false
     
     var selectedDate = Date()
+    
+    init() {
+        
+        do {
+            let schema = Schema(versionedSchema: SchemaLatest.self)
+            let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        
+            modelContainer = try ModelContainer(for: schema,
+                                                configurations: [modelConfiguration])
+            modelContext = modelContainer.mainContext
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+       
+    }
     
     // Function to check if a date is today
     func isDateToday(_ date: Date) -> Bool {
