@@ -68,4 +68,5 @@ struct LoginView: View {
 #Preview {
     LoginView()
         .environment(ModelData.shared)
+        .environmentObject(ModelData.shared.client)
 }

@@ -12,7 +12,7 @@ open class AutarcoAPIClient : ObservableObject {
     let apiEndpoint = "https://my.autarco.com/api/site"
     var public_key = ""
     var authData = ""
-    var errorMessage = ""
+    @Published var errorMessage = ""
     @Published var isTest: Bool = false
     @Published var isLoggedIn: Bool = false
     
@@ -28,11 +28,23 @@ open class AutarcoAPIClient : ObservableObject {
         }
     }
     
+    func setTestMode(_ testMode: Bool) {
+        DispatchQueue.main.async {
+            self.isTest = testMode
+        }
+    }
+    
+    func setErrorMessage(_ message: String) {
+        DispatchQueue.main.async {
+            self.errorMessage = message
+        }
+    }
+    
     func login(user: String, password: String) async -> Bool {
         clearError()
         
         if (user == "test") {
-            isTest = true
+            self.setTestMode(true)
             return true
         }
         
@@ -54,7 +66,7 @@ open class AutarcoAPIClient : ObservableObject {
     func logout() {
         Keychain.delete(service: AutarcoAPIClient.identifier, key: "token")
         authData = ""
-        isTest = false
+        self.setTestMode(false)
     }
     
     fileprivate func retrieveUserAuthData() -> String {
@@ -84,7 +96,7 @@ open class AutarcoAPIClient : ObservableObject {
     
     
     public func doRequest(path: String, completion: @escaping (Any) -> Void) async {
-        self.errorMessage = ""
+        self.setErrorMessage("")
         if let powerRequest = createRequest(path: path) {
             await withTaskGroup(of: Void.self) { taskGroup in
                 taskGroup.addTask {
@@ -104,25 +116,25 @@ open class AutarcoAPIClient : ObservableObject {
                             if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
                                 completion(json)
                             } else {
-                                self.errorMessage = "Failed to parse data from \(path)"
+                                self.setErrorMessage("Failed to parse data from \(path)")
                             }
                         } else {
                             let error = response.responseMessage()
-                            self.errorMessage = "Failed to request \(path), response: \(error)"
+                            self.setErrorMessage("Failed to request \(path), response: \(error)")
                         }
                     } catch {
-                        self.errorMessage = "Failed to request \(path) \(error.localizedDescription)"
+                        self.setErrorMessage("Failed to request \(path) \(error.localizedDescription)")
                     }
                 }
             }
         } else {
-            self.errorMessage = "Failed to request \(path)"
+            self.setErrorMessage("Failed to request \(path)")
         }
     }
     
     public func getPublicKey() async {
         if (authData.isEmpty) {
-            self.errorMessage = "No login information"
+            self.setErrorMessage("No login information")
             return
         }
         
@@ -137,11 +149,11 @@ open class AutarcoAPIClient : ObservableObject {
                     }
                 }
             }
-            self.errorMessage = "Failed to get API key"
+            self.setErrorMessage("Failed to get API key")
         }
     }
     
     public func clearError() {
-        self.errorMessage = ""
+        self.setErrorMessage("")
     }
 }

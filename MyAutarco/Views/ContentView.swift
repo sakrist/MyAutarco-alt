@@ -11,10 +11,7 @@ import WidgetKit
 struct ContentView: View {
     
     @Environment(ModelData.self) private var modelData
-    @Environment(\.modelContext) private var modelContext
-    
     @EnvironmentObject var client: AutarcoAPIClient
-    
     
     @State private var firstStart = true
     
@@ -23,7 +20,6 @@ struct ContentView: View {
             if (client.isLoggedIn) {
                 HouseView().task {
                     if (firstStart) {
-                        modelData.modelContext = modelContext
                         await modelData.pullAllToday()
                         firstStart = false
                         DispatchQueue.main.async {
@@ -41,4 +37,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .environment(ModelData.shared)
+        .environmentObject(ModelData.shared.client)
 }

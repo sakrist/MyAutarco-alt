@@ -100,7 +100,7 @@ struct HouseView: View {
                 .foregroundStyle(.red)
             
             
-            Text(modelData.client.errorMessage)
+            Text(client.errorMessage)
                 .foregroundStyle(.red)
         }
     }
@@ -109,4 +109,5 @@ struct HouseView: View {
 #Preview {
     HouseView()
         .environment(ModelData.shared)
+        .environmentObject(ModelData.shared.client)
 }
