@@ -55,7 +55,7 @@ open class AutarcoAPIClient : ObservableObject {
         await getPublicKey()
         
         if (errorMessage.isEmpty) {
-            if let data = authData.data(using: .ascii) {
+            if let data = authData.data(using: .ascii), !public_key.isEmpty {
                 Keychain.save(service: AutarcoAPIClient.identifier, key: "token", data: data)
                 return true
             }
@@ -66,6 +66,7 @@ open class AutarcoAPIClient : ObservableObject {
     func logout() {
         Keychain.delete(service: AutarcoAPIClient.identifier, key: "token")
         authData = ""
+        public_key = ""
         self.setTestMode(false)
     }
     
